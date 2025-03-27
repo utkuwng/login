@@ -18,7 +18,7 @@
             align-items: center;
             height: 100vh;
             background: linear-gradient(135deg, #667eea, #764ba2);
-            transition: background 0.5s ease;
+            transition: opacity 1s ease-out;
         }
 
         .login-container {
@@ -77,6 +77,11 @@
             text-decoration: none;
             font-size: 14px;
         }
+
+        /* Hiệu ứng mờ dần rồi biến mất */
+        .fade-out {
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
@@ -98,8 +103,13 @@
 
     <script>
         document.getElementById("loginForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Ngăn form gửi đi (chặn reload trang)
-            document.body.style.background = "white"; // Thay đổi màu nền thành trắng
+            event.preventDefault(); // Ngăn form gửi đi
+
+            document.body.classList.add("fade-out"); // Thêm hiệu ứng mờ
+
+            setTimeout(() => {
+                document.body.innerHTML = ""; // Xóa toàn bộ nội dung sau 1 giây
+            }, 1000);
         });
     </script>
 </body>
