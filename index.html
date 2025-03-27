@@ -18,6 +18,7 @@
             align-items: center;
             height: 100vh;
             background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: background 0.5s ease;
         }
 
         .login-container {
@@ -81,7 +82,7 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form>
+        <form id="loginForm">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
@@ -94,5 +95,12 @@
             <a href="#" class="forgot-password">Forgot password?</a>
         </form>
     </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Ngăn form gửi đi (chặn reload trang)
+            document.body.style.background = "white"; // Thay đổi màu nền thành trắng
+        });
+    </script>
 </body>
 </html>
